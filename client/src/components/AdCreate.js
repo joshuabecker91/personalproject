@@ -39,7 +39,7 @@ const AdCreate = () => {
     };
 
     return (
-        <div className="col-xs-12 col-md-10 col-lg-8 mx-auto">
+        <div className="col-sm-11 col-md-10 col-lg-8 mx-auto">
             <h2 className="my-4 py-4">Create New Campaign</h2>
             <div className="col-12 d-flex justify-content-between my-4 align-items-center">
                 <div className="d-flex justify-content-start col-4">
@@ -57,7 +57,7 @@ const AdCreate = () => {
                 </div>
             </div>
             <div className="col-12 d-flex justify-content-start">
-                <form className="col-12 mt-4 d-flex justify-content-around" onSubmit={createAdHandler}>
+                <form className="col-12 mt-4 d-flex justify-content-start" onSubmit={createAdHandler}>
                     <div className="col-5 form-group text-start mt-4">
                         <label className="mb-2" htmlFor="campaignTitle">Campaign Title</label>
                         <input type="text" className="form-control mb-2" onChange={(e) => setCampaignTitle(e.target.value)} value={campaignTitle} />
@@ -78,21 +78,28 @@ const AdCreate = () => {
                             <p>{description}</p>
                         </div>
                     </div>
+
+                    <div className="col-1"></div>
+
                     <div className="col-5 form-group text-start mt-4">
                         <label className="mb-2" htmlFor="description">Description</label>
                         <textarea type="text" className="form-control mb-2" onChange={(e) => setDescription(e.target.value)} value={description} />
                         {errors.description ? <p className="text-danger mt-2">{errors.description.message}</p> : null}
 
                         <label className="mb-2" htmlFor="bidForPlacement">Bid For Placement</label>
-                        <input type="number" className="form-control mb-2" onChange={(e) => setBidForPlacement(e.target.value)} value={bidForPlacement} />
+                        <input type="text" className="form-control mb-2" onChange={(e) => setBidForPlacement(e.target.value)} value={bidForPlacement} />
                         {errors.bidForPlacement ? <p className="text-danger mt-2">{errors.bidForPlacement.message}</p> : null}
 
                         <p className="mb-2">Suggested bid between $0.10 - $2.00</p>
 
                         <button className="btn btn-primary my-4" type="submit">Submit</button>
                     </div>
+
+                    <div className="col-1"></div>
+
                 </form>
             </div>
+            <Link className="my-4 mx-2 d-flex justify-content-end" to={"/"}><button className="btn btn-secondary">Cancel</button></Link>
         </div>
     )
 }

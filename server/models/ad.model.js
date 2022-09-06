@@ -11,6 +11,7 @@ const AdSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Target Address is required'],
         minLength: [5, 'Target Address must be at least 5 characters'],
+        // add validation that ensures http:// or https:// is included in address
     },
     displayLink: {
         type: String,
@@ -21,7 +22,7 @@ const AdSchema = new mongoose.Schema({
     description: {
         type: String,
         required: [true, 'Description is required'],
-        minLength: [10, 'Description Link must be at least 10 characters'],
+        minLength: [10, 'Description must be at least 10 characters'],
         maxLength: [100, 'Description must be a maximum of 100 characters'],
     },
     bidForPlacement: {

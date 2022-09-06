@@ -143,7 +143,7 @@ const AdDetails = (props) => {
                     <h5 className="mt-4">Status</h5>
                     {status.toString() === "true" ? (<p>Active</p>) : <p>Paused</p>}
                     {console.log(status.toString())}
-                    <div className="col-12 d-flex justify-content-start">
+                    <div className="mt-4 col-12 d-flex justify-content-start">
                         <Link to={`/${id}`}>
                             <button className="btn btn-secondary me-2" onClick={() => handleStatusAd(id)}>{status.toString() === "true" ? "Pause" : "Resume"}</button>
                         </Link>

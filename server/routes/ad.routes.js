@@ -8,5 +8,3 @@ module.exports = (app) => {
     app.patch('/api/ad/:id', AdController.updateStatusAd);
     app.delete('/api/ad/:id', AdController.deleteAd);
 };
-
-// patch status

@@ -17,7 +17,6 @@ const AllAds = () => {
         });
     }, []);
 
-
     return (
         <div className="col-sm-11 col-md-10 col-lg-8 mx-auto">
             <h2 className="my-4 py-4">Campaign Dashboard</h2>
@@ -41,11 +40,11 @@ const AllAds = () => {
                     <thead className="col-12">
                         <tr className="text-start col-12">
                             <th className="col-3">Campaign Title</th>
-                            <th className="col-2">Address</th>
+                            <th className="col-3">Address</th>
                             <th className="col-1">Status</th>
                             {/* <th className="col-2">Date Created</th> */}
                             <th className="col-1">Clicks</th>
-                            <th className="col-5">Actions</th>
+                            <th className="col-4">Actions</th>
                         </tr>
                     </thead>
                     <tbody  className="col-12">
@@ -60,17 +59,17 @@ const AllAds = () => {
                             return (
                                 <tr className="text-start col-12" key={ad._id}>
                                     <td className="col-3">{ad.campaignTitle}</td>
-                                    <td className="col-2"><Link to={`${ad.targetAddress}`}>{ad.displayLink}</Link></td>
+                                    <td className="col-3"><a href={`${ad.targetAddress}`}>{ad.displayLink}</a></td>
                                     <td className="col-1">{ad.status.toString() === "true" ? "Active" : "Paused"}</td>
                                     {/* <td className="col-2">{ad.createdAt}</td> */}
                                     <td className="col-1">{ad.clicks}</td>
-                                    <td className="col-5">
+                                    <td className="col-4">
                                         <Link to={`/${ad._id}`}>
                                             <button className="btn btn-primary mx-1">Details</button>
                                         </Link>
-                                        <Link to={`/${ad._id}`}>
+                                        {/* <Link to={`/${ad._id}`}>
                                             <button className="btn btn-secondary mx-1">{ad.status.toString() === "true" ? "Pause" : "Resume"}</button>
-                                        </Link>
+                                        </Link> */}
                                         <Link to={`/${ad._id}/update`}>
                                             <button className="btn btn-warning mx-1">Update</button>
                                         </Link>
