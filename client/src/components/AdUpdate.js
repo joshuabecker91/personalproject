@@ -74,7 +74,7 @@ const AdUpdate = (props) => {
             <h2 className="my-4 py-4">Update Campaign</h2>
             <div className="col-12 d-flex justify-content-between my-4 align-items-center">
                 <div className="d-flex justify-content-start col-4">
-                    <Link to={"/"}>
+                    <Link to={"/dashboard"}>
                         <button className="btn btn-dark">See All Ads</button>
                     </Link>
                 </div>
@@ -136,7 +136,7 @@ const AdUpdate = (props) => {
                 </form>
             </div>
             }
-            <Link className="my-4 mx-2 d-flex justify-content-end" to={"/"}><button className="btn btn-secondary">Cancel</button></Link>
+            <Link className="my-4 mx-2 d-flex justify-content-end" to={"/dashboard"}><button className="btn btn-secondary">Cancel</button></Link>
         </div>
     )
 }

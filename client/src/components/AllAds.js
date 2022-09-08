@@ -81,6 +81,7 @@ const AllAds = () => {
                     </tbody>
                 </table>
             </div>
+            <Link className="my-4 d-flex justify-content-end" to={"/"}><button className="btn btn-secondary">Back</button></Link>
         </div>
     )
 }
