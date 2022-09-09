@@ -11,20 +11,21 @@ import MoreVertIcon from '@material-ui/icons/MoreVertOutlined';
 import { useStateValue } from '../StateProvider';
 import UseGoogleSearch from '../components/UseGoogleSearch';
 import axios from 'axios';
-import { useNavigate } from 'react-router';
 import Response from '../Response';
+// import { useNavigate } from 'react-router-dom';
 // import SettingsIcon from '@material-ui/icons/SettingsOutlined';
 
 const SearchPage = () => {
 
     const [{term}, dispatch] = useStateValue();
 
-    const navigate = useNavigate(); 
+    // const navigate = useNavigate(); 
 
     // LIVE API CALL
     const { data } = UseGoogleSearch(term);
     console.log(data)
 
+    // UNCOMMENT DURING DEVELOPMENT - avoid unnecessary api calls during development
     // const data = Response;
     // console.log(data)
 
@@ -34,8 +35,20 @@ const SearchPage = () => {
         axios.get('http://localhost:8000/api/ad')
         .then((response) => {
             console.log(response.data);
-            // if active. grab 5 random and rank highest bidder.
-            setAllAds(response.data);
+            // Check all the ads and filter to only select the ones that are active.
+            const newList = response.data.filter((ad)=>{
+                return ad.status == true
+            })
+            console.log(newList);
+            // Grab 5 ads randomly
+            const shuffled = newList.sort(() => 0.5 - Math.random());
+            let selected = shuffled.slice(0, 5);
+            console.log(selected);
+            // up to 5 ads are stored in state at random. They are rendered below and listed with preference according to their bid amount.
+            // Ads are rendered and listed from highest bidder decending to lowest bidder.
+            setAllAds(selected);
+            // setAllAds(newList); // to set all that are true and not do math.random
+            // setAllAds(response.data); // to simply set all ads without filtering anything
         })
         .catch((err) => {
             console.log(err.response);
@@ -43,21 +56,35 @@ const SearchPage = () => {
     }, [term]);
 
 
-    // const handleClickAd = (id) => {
-    //     axios.patch(`http://localhost:8000/api/ad/${id}`, {
-    //         clicks: 1,
-    //         // amountBilled: ad.amountBilled + ad.bidForPlacement,
-    //     })
-    //     .then((response) => {
-    //         console.log(response);
-    //         // setStatus(false)
-    //         // navigate(address);
-    //     })
-    //     .catch((err) => {
-    //         console.log(err.response.data.err.errors);
-    //         // setErrors(err.response.data.err.errors);
-    //     });
-    // }
+    const handleClickAd = (id, index) => {
+        axios.patch(`http://localhost:8000/api/ad/${id}`, {
+            clicks: (allAds[index].clicks + 1),
+            amountBilled: (allAds[index].amountBilled + allAds[index].bidForPlacement).toFixed(2),
+            // Could pass these variables up or access them from state directly
+            // clicks: clicks + 1,
+            // amountBilled: ad.amountBilled + ad.bidForPlacement,
+        })
+        .then((response) => {
+            console.log(response);
+            console.log("link clicked")
+            console.log(allAds[index].targetAddress);
+            window.open(allAds[index].targetAddress,"_blank"); 
+            // window.location.href = allAds[index].targetAddress; // this works!!
+            // window.location.href = "http://www.yahoo.com";  // this works!
+            // navigate("http://www.yahoo.com")
+            // navigate(allAds[index].targetAddress); // nav for local routing
+            // let link = allAds[index].targetAddress.toString()
+            // navigate(`${link}`);
+            // console.log(response.data.updatedAt.targetAddress);
+            // setStatus(false)
+            // work on this link
+            // navigate(`${allAds[index].targetAddress}`);
+        })
+        .catch((err) => {
+            console.log(err.response.data.err.errors);
+            // setErrors(err.response.data.err.errors);
+        });
+    }
 
     return (
         <div className="searchPage">
@@ -134,7 +161,7 @@ const SearchPage = () => {
             )}
                 <div className="col-sm-5 col-md-4 col-lg-3 ads">
                     {allAds
-                    // Sort the ads by type - alphabetically
+                    // Sort the ads by type - highest bidder gets preference
                     .sort((a, b) => {
                         if (a.bidForPlacement > b.bidForPlacement) return -1;
                         if (a.bidForPlacement < b.bidForPlacement) return 1;
@@ -142,13 +169,14 @@ const SearchPage = () => {
                     })
                     .map((ad, index) => {
                         return (
-                            <div className="m-4">
+                            <div className="m-4 adCard">
                                 <div className="card px-3 py-2 col-10 ad" key={ad._id}>
-                                    <h5>{ad.campaignTitle}</h5>
+                                    <h5 className="adTitle pt-3">{ad.campaignTitle}</h5>
                                     {/* <p>Bid: {ad.bidForPlacement}</p> */}
-                                    <a href={ad.targetAddress}>{ad.displayLink}</a>
+                                    <a className="adLink" onClick={() => handleClickAd(ad._id, index)}>{ad.displayLink}</a>
+                                    {/* working with button element */}
                                     {/* href={ad.targetAddress}  */}
-                                    {/* onClick={() => handleClickAd(ad._id)} */}
+                                    {/* href={ad.targetAddress} */}
                                     <p>{ad.description}</p>
                                 </div>
                             </div>
@@ -157,8 +185,6 @@ const SearchPage = () => {
                 </div>
 
             </div>
-
-
 
             {/* <h1>{term}</h1> */}
 

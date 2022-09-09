@@ -22,12 +22,12 @@ const AllAds = () => {
             <h2 className="my-4 py-4">Campaign Dashboard</h2>
             <div className="col-12 d-flex justify-content-between my-4 align-items-center">
                 <div className="d-flex justify-content-start col-4">
-                    <Link to={"/new"}>
-                        <button className="btn btn-dark">See All Ads</button>
+                    <Link to={"/"}>
+                        <button className="btn btn-dark">Home</button>
                     </Link>
                 </div>
                 <div className="d-flex justify-content-end col-8">
-                    <Link to={"/new"}>
+                    <Link to={"/"}>
                         <button className="btn btn-dark mx-2">User Profile</button>
                     </Link>
                     <Link to={"/new"}>
@@ -59,7 +59,7 @@ const AllAds = () => {
                             return (
                                 <tr className="text-start col-12" key={ad._id}>
                                     <td className="col-3">{ad.campaignTitle}</td>
-                                    <td className="col-3"><a href={`${ad.targetAddress}`}>{ad.displayLink}</a></td>
+                                    <td className="col-3"><a target="_blank" href={`${ad.targetAddress}`}>{ad.displayLink}</a></td>
                                     <td className="col-1">{ad.status.toString() === "true" ? "Active" : "Paused"}</td>
                                     {/* <td className="col-2">{ad.createdAt}</td> */}
                                     <td className="col-1">{ad.clicks}</td>

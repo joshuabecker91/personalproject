@@ -48,7 +48,7 @@ const AdDetails = (props) => {
             .then((response) => {
                 console.log("Ad Deleted");
                 console.log(response);
-                navigate("/");
+                navigate("/dashboard");
                 // const filteredPets = allPets.filter((pet) => {
                 //     return pet._id !== id;
                 // });
@@ -125,7 +125,7 @@ const AdDetails = (props) => {
                     <h5 className="mt-4">Advertisement Preview</h5>
                     <div className="card p-2 col-10">
                         <h5>{campaignTitle}</h5>
-                        <a href={targetAddress}>{displayLink}</a>
+                        <a target="_blank" href={targetAddress}>{displayLink}</a>
                         <p>{description}</p>
                     </div>
                 </div>

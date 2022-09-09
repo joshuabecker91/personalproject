@@ -61,7 +61,7 @@ const AdUpdate = (props) => {
         })
             .then((response) => {
                 console.log(response);
-                navigate("/");
+                navigate("/dashboard");
             })
             .catch((err) => {
                 console.log(err.response.data.err.errors);
@@ -110,7 +110,7 @@ const AdUpdate = (props) => {
                         <h5 className="mt-4">Advertisement Preview</h5>
                         <div className="card p-2 col-12">
                             <h5>{campaignTitle}</h5>
-                            <a href={targetAddress}>{displayLink}</a>
+                            <a target="_blank" href={targetAddress}>{displayLink}</a>
                             <p>{description}</p>
                         </div>
                     </div>

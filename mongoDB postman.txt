@@ -21,3 +21,13 @@
 "status": true
 }
 
+{
+"campaignTitle" : "New Ad Created Now",
+"targetAddress" : "www.netflix.com",
+"displayLink" : "www.netflix.com",
+"description" : "Amazing movies wow. If you delete me you are a hero!",
+"bidForPlacement": 0.50,
+"clicks": 10,
+"amountBilled": 5.00,
+"status": true
+}
