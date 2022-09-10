@@ -89,7 +89,7 @@ const AdUpdate = (props) => {
             </div>
             {adNotFoundError ? (
                 <h2>
-                    {adNotFoundError} <Link to="/"><p className="text-primary">Click here to go back</p></Link>
+                    {adNotFoundError} <Link to="/dashboard"><p className="text-primary">Click here to go back</p></Link>
                 </h2>
             ) :
             <div className="col-12 d-flex justify-content-start">
@@ -108,8 +108,8 @@ const AdUpdate = (props) => {
                         {errors.displayLink ? <p className="text-danger mt-2">{errors.displayLink.message}</p> : null}
 
                         <h5 className="mt-4">Advertisement Preview</h5>
-                        <div className="card p-2 col-12">
-                            <h5>{campaignTitle}</h5>
+                        <div className="card px-3 py-2 col-12">
+                            <h5 className="pt-2">{campaignTitle}</h5>
                             <a target="_blank" href={targetAddress}>{displayLink}</a>
                             <p>{description}</p>
                         </div>

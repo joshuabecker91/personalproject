@@ -18,6 +18,9 @@ const AdDetails = (props) => {
     const [ createdAt, setCreatedAt ] = useState();
     const [ updatedAt, setUpdatedAt ] = useState();
 
+    // format the date
+    let formattedCreatedAt = new Date(createdAt)
+
     const navigate = useNavigate();
 
     const [adNotFoundError, setAdNotFoundError] = useState("");
@@ -109,7 +112,7 @@ const AdDetails = (props) => {
             </div>
             {adNotFoundError ? (
                 <h2>
-                    {adNotFoundError} <Link to="/"><p className="text-primary">Click here to go back</p></Link>
+                    {adNotFoundError} <Link to="/dashboard"><p className="text-primary">Click here to go back</p></Link>
                 </h2>
             ) :
             <div className="col-12 d-flex justify-content-start">
@@ -121,10 +124,10 @@ const AdDetails = (props) => {
                     <h5 className="mt-4">Display Link</h5>
                     <p>{displayLink}</p>
                     <h5 className="mt-4">Created On</h5>
-                    <p>{createdAt}</p> 
+                    <p>{formattedCreatedAt.toDateString()}</p> 
                     <h5 className="mt-4">Advertisement Preview</h5>
-                    <div className="card p-2 col-10">
-                        <h5>{campaignTitle}</h5>
+                    <div className="card px-3 py-2 col-10">
+                        <h5 className="pt-2">{campaignTitle}</h5>
                         <a target="_blank" href={targetAddress}>{displayLink}</a>
                         <p>{description}</p>
                     </div>

@@ -3,7 +3,7 @@ import './Search.css';
 import SearchIcon from '@material-ui/icons/Search';
 import MicIcon from '@material-ui/icons/Mic';
 import { Button } from '@mui/material';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { useStateValue } from '../StateProvider';
 import { actionTypes } from '../reducer';
 // import axios from axios;
@@ -38,7 +38,6 @@ const Search = (props) => {
                 term: null,
             })
         }
-
         // could also do it this way - pass via props navigate(`/search/${input}`)
         // old way of doing it history.push('/search')
         // then when it goes to /search route that component will fetch the term via useStateValue

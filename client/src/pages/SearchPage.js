@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './SearchPage.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Search from '../components/Search';
 import SearchIcon from '@material-ui/icons/Search';
 import ImageIcon from '@material-ui/icons/ImageOutlined';
@@ -12,14 +12,13 @@ import { useStateValue } from '../StateProvider';
 import UseGoogleSearch from '../components/UseGoogleSearch';
 import axios from 'axios';
 import Response from '../Response';
-// import { useNavigate } from 'react-router-dom';
 // import SettingsIcon from '@material-ui/icons/SettingsOutlined';
 
 const SearchPage = () => {
 
     const [{term}, dispatch] = useStateValue();
 
-    // const navigate = useNavigate(); 
+    const navigate = useNavigate(); 
 
     // LIVE API CALL
     const { data } = UseGoogleSearch(term);
@@ -30,6 +29,13 @@ const SearchPage = () => {
     // console.log(data)
 
     const [allAds, setAllAds] = useState([]);
+
+    // avoid searching a null when refresh or when user clicks back in their browser
+    useEffect(() => {
+        if(term == null){
+            navigate('/')
+        };
+    }, [term]);
 
     useEffect(() => {
         axios.get('http://localhost:8000/api/ad')

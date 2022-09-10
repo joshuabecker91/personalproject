@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import './AllAds.css';
 
 const AllAds = () => {
 
@@ -18,7 +19,7 @@ const AllAds = () => {
     }, []);
 
     return (
-        <div className="col-sm-11 col-md-10 col-lg-8 mx-auto">
+        <div className="col-md-10 col-lg-8 mx-auto allAdsPage">
             <h2 className="my-4 py-4">Campaign Dashboard</h2>
             <div className="col-12 d-flex justify-content-between my-4 align-items-center">
                 <div className="d-flex justify-content-start col-4">
@@ -35,16 +36,16 @@ const AllAds = () => {
                     </Link>
                 </div>
             </div>
-            <div className="card p-2">
+            <div className="card px-1">
                 <table className="col-12 mx-auto table table-hover text-start mt-4">
                     <thead className="col-12">
                         <tr className="text-start col-12">
                             <th className="col-3">Campaign Title</th>
                             <th className="col-3">Address</th>
-                            <th className="col-1">Status</th>
-                            {/* <th className="col-2">Date Created</th> */}
-                            <th className="col-1">Clicks</th>
-                            <th className="col-4">Actions</th>
+                            <th className="col-1 adStatus">Status</th>
+                            <th className="col-1 adBidForPlacement">Bid</th>
+                            <th className="col-1 adClicks">Clicks</th>
+                            <th className="col-3">Actions</th>
                         </tr>
                     </thead>
                     <tbody  className="col-12">
@@ -60,18 +61,18 @@ const AllAds = () => {
                                 <tr className="text-start col-12" key={ad._id}>
                                     <td className="col-3">{ad.campaignTitle}</td>
                                     <td className="col-3"><a target="_blank" href={`${ad.targetAddress}`}>{ad.displayLink}</a></td>
-                                    <td className="col-1">{ad.status.toString() === "true" ? "Active" : "Paused"}</td>
-                                    {/* <td className="col-2">{ad.createdAt}</td> */}
-                                    <td className="col-1">{ad.clicks}</td>
-                                    <td className="col-4">
+                                    <td className="col-1 adStatus">{ad.status.toString() === "true" ? "Active" : "Paused"}</td>
+                                    <td className="col-1 adBidForPlacement">{ad.bidForPlacement}</td>
+                                    <td className="col-1 adClicks">{ad.clicks}</td>
+                                    <td className="col-3">
                                         <Link to={`/${ad._id}`}>
-                                            <button className="btn btn-primary mx-1">Details</button>
+                                            <button className="btn btn-primary me-1 adDetailButton">Details</button>
                                         </Link>
                                         {/* <Link to={`/${ad._id}`}>
                                             <button className="btn btn-secondary mx-1">{ad.status.toString() === "true" ? "Pause" : "Resume"}</button>
                                         </Link> */}
                                         <Link to={`/${ad._id}/update`}>
-                                            <button className="btn btn-warning mx-1">Update</button>
+                                            <button className="btn btn-warning adUpdateButton">Update</button>
                                         </Link>
                                         {/* <button className="btn btn-danger" onClick={() => handleDeletePet(pet._id)}>Adopt</button> */}
                                     </td>

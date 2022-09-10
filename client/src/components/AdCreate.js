@@ -72,8 +72,8 @@ const AdCreate = () => {
                         {errors.displayLink ? <p className="text-danger mt-2">{errors.displayLink.message}</p> : null}
 
                         <h5 className="mt-4">Advertisement Preview</h5>
-                        <div className="card p-2 col-12">
-                            <h5>{campaignTitle}</h5>
+                        <div className="card px-3 py-2 col-12">
+                            <h5 className="pt-2">{campaignTitle}</h5>
                             <a target="_blank" href={targetAddress}>{displayLink}</a>
                             <p>{description}</p>
                         </div>

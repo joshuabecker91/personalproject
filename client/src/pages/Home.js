@@ -14,14 +14,10 @@ const Home = () => {
                 <div className='home__headerLeft'>
                     <Link to='/dashboard'>Dashboard</Link>
                     <a target="_blank" href='https://github.com/joshuabecker91/googleclone'>About</a>
-                    {/* <Link to='/images'>About</Link> */}
                 </div>
                 <div className='home__headerRight'>
                     <a target="_blank" href='https://www.linkedin.com/in/beckerjoshua/'>LinkedIn</a>
                     <a target="_blank" href='https://www.dropbox.com/s/ov7l3plx9dtge3h/Joshua%20Becker%20Resume.pdf?dl=0'>Resume</a>
-                    {/* <Link to='/gmail'>Gmail</Link> email with my email */}
-                    {/* <Link to='/images'>Images</Link> */}
-                    {/* <Link to='/images'>Contact</Link> */}
                     <AppsIcon/>
                     <Avatar>G</Avatar>
                 </div>
