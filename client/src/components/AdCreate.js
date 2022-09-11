@@ -9,6 +9,7 @@ const AdCreate = () => {
     const [ displayLink, setDisplayLink ] = useState("");
     const [ description, setDescription ] = useState("");
     const [ bidForPlacement, setBidForPlacement ] = useState(0.10);
+    // Don't actually need these here as a default value is provided in the model
     // const [ clicks, setClicks ] = useState(0);
     // const [ amountBilled, setAmountBilled ] = useState(0);
     // const [ status, setStatus ] = useState(true);
@@ -48,9 +49,9 @@ const AdCreate = () => {
                     </Link>
                 </div>
                 <div className="d-flex justify-content-end col-8">
-                    <Link to={"/new"}>
+                    {/* <Link to={"/new"}>
                         <button className="btn btn-dark mx-2">User Profile</button>
-                    </Link>
+                    </Link> */}
                     {/* <Link to={"/new"}>
                         <button className="btn btn-success">New Campaign</button>
                     </Link> */}

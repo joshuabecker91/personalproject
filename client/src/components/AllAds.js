@@ -28,9 +28,9 @@ const AllAds = () => {
                     </Link>
                 </div>
                 <div className="d-flex justify-content-end col-8">
-                    <Link to={"/"}>
+                    {/* <Link to={"/"}>
                         <button className="btn btn-dark mx-2">User Profile</button>
-                    </Link>
+                    </Link> */}
                     <Link to={"/new"}>
                         <button className="btn btn-success">New Campaign</button>
                     </Link>

@@ -26,3 +26,6 @@ function App() {
 }
 
 export default App;
+
+// Note: Given the route for the ad api calls includes "ads" -
+// you may have to disable ad-blocker if there are issues with them rendering

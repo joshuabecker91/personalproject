@@ -49,6 +49,5 @@ const AdSchema = new mongoose.Schema({
 module.exports = mongoose.model('Ad', AdSchema);
 
 // unique: true, // need to work more on getting unique working
-
-// need to add relationship one user to many ads
+// if login and reg - need to add relationship one user to many ads
 // new field would be email perhaps createdBy

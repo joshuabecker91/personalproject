@@ -1,15 +1,9 @@
 import { useState, useEffect } from 'react';
 import API_KEY from '../keys';
-// import { useStateValue } from '../StateProvider';
-// import { useParams } from 'react-router-dom';
-
-// const CONTEXT_KEY = "6da68d082baccf19a"
 
 const CONTEXT_KEY = "f4f74a225bb6f4400"
 
 const UseGoogleSearch = (term) => {
-
-    // const [{term}, dispatch] = useStateValue();
 
     const [data, setData] = useState(null);
 

@@ -17,8 +17,8 @@ app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
 
 
-
-
+// Login and Registration will need:
+// ---------------------------------------------------------------
 // require('dotenv').config()
 // const PORT = process.env.PORT || 4000;
 // const cookieParser = require('cookie-parser')
@@ -28,4 +28,3 @@ app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 // app.get('URL_PATH',(req,res)=>{
 //     // run the function
 // })
-

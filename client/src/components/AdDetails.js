@@ -52,10 +52,10 @@ const AdDetails = (props) => {
                 console.log("Ad Deleted");
                 console.log(response);
                 navigate("/dashboard");
-                // const filteredPets = allPets.filter((pet) => {
-                //     return pet._id !== id;
+                // const filteredAds = allAds.filter((ad) => {
+                //     return ad._id !== id;
                 // });
-                // setAllPets(filteredPets); don't need to do this since we will immediately forward them back to home page
+                // setAllAds(filteredAds); don't need to do this since we will immediately forward them back to the dashboard
             })
             .catch((err) => {
                 console.log("Error Deleting Ad", err.response);
@@ -102,9 +102,9 @@ const AdDetails = (props) => {
                     </Link>
                 </div>
                 <div className="d-flex justify-content-end col-8">
-                    <Link to={"/new"}>
+                    {/* <Link to={"/new"}>
                         <button className="btn btn-dark mx-2">User Profile</button>
-                    </Link>
+                    </Link> */}
                     {/* <Link to={"/new"}>
                         <button className="btn btn-success">New Campaign</button>
                     </Link> */}

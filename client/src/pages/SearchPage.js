@@ -11,8 +11,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVertOutlined';
 import { useStateValue } from '../StateProvider';
 import UseGoogleSearch from '../components/UseGoogleSearch';
 import axios from 'axios';
-import Response from '../Response';
-// import SettingsIcon from '@material-ui/icons/SettingsOutlined';
+// import Response from '../Response';
 
 const SearchPage = () => {
 
@@ -30,7 +29,7 @@ const SearchPage = () => {
 
     const [allAds, setAllAds] = useState([]);
 
-    // avoid searching a null when refresh or when user clicks back in their browser
+    // Avoid searching a null when refresh or when user clicks back in their browser
     useEffect(() => {
         if(term == null){
             navigate('/')
@@ -68,23 +67,18 @@ const SearchPage = () => {
             amountBilled: (allAds[index].amountBilled + allAds[index].bidForPlacement).toFixed(2),
             // Could pass these variables up or access them from state directly
             // clicks: clicks + 1,
-            // amountBilled: ad.amountBilled + ad.bidForPlacement,
+            // amountBilled: ad.amountBilled + ad.bidForPlacement;
         })
         .then((response) => {
             console.log(response);
             console.log("link clicked")
             console.log(allAds[index].targetAddress);
             window.open(allAds[index].targetAddress,"_blank"); 
-            // window.location.href = allAds[index].targetAddress; // this works!!
-            // window.location.href = "http://www.yahoo.com";  // this works!
+            // window.location.href = "http://www.yahoo.com";  // testing - this works
+            // window.location.href = allAds[index].targetAddress; // this works
+            // cannot use navigate('') because it wants to stay in the local directory and routes localhost:3000/http://www.link.com
             // navigate("http://www.yahoo.com")
-            // navigate(allAds[index].targetAddress); // nav for local routing
-            // let link = allAds[index].targetAddress.toString()
-            // navigate(`${link}`);
-            // console.log(response.data.updatedAt.targetAddress);
-            // setStatus(false)
-            // work on this link
-            // navigate(`${allAds[index].targetAddress}`);
+            // navigate(allAds[index].targetAddress);
         })
         .catch((err) => {
             console.log(err.response.data.err.errors);
@@ -128,10 +122,6 @@ const SearchPage = () => {
                     </div>
                 </div>
                 <div className='searchPage__optionsRight'>
-                    {/* <div className='searchPage__option'>
-                        <SettingsIcon />
-                        <Link to="/settings">Settings</Link>
-                    </div> */}
                     <div className='searchPage__option'>
                         <Link to="/tools">Tools</Link>
                     </div>
@@ -180,9 +170,6 @@ const SearchPage = () => {
                                     <h5 className="adTitle pt-3">{ad.campaignTitle}</h5>
                                     {/* <p>Bid: {ad.bidForPlacement}</p> */}
                                     <a className="adLink" onClick={() => handleClickAd(ad._id, index)}>{ad.displayLink}</a>
-                                    {/* working with button element */}
-                                    {/* href={ad.targetAddress}  */}
-                                    {/* href={ad.targetAddress} */}
                                     <p>{ad.description}</p>
                                 </div>
                             </div>
@@ -193,8 +180,6 @@ const SearchPage = () => {
             </div>
 
             {/* <h1>{term}</h1> */}
-
-            {/* add map through images for new component */}
 
         </div>
     )

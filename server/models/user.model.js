@@ -1,6 +1,0 @@
-
-
-
-
-// totalBalanceDue
-// pastPayments []

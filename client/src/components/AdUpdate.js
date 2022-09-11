@@ -56,8 +56,6 @@ const AdUpdate = (props) => {
             clicks,
             amountBilled,
             status,
-            // createdAt, //do we need this?
-            // updatedAt, //do we need this?
         })
             .then((response) => {
                 console.log(response);
@@ -79,9 +77,9 @@ const AdUpdate = (props) => {
                     </Link>
                 </div>
                 <div className="d-flex justify-content-end col-8">
-                    <Link to={"/new"}>
+                    {/* <Link to={"/new"}>
                         <button className="btn btn-dark mx-2">User Profile</button>
-                    </Link>
+                    </Link> */}
                     {/* <Link to={"/new"}>
                         <button className="btn btn-success">New Campaign</button>
                     </Link> */}
