@@ -1,3 +1,7 @@
+AWS EC2 Deployed
+http://googleclone.com 
+http://54.183.210.137 
+
 Name: Joshua Becker
  Project Title: Advertisements
  Project Stack: MERN
